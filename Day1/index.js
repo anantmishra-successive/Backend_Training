@@ -3,7 +3,7 @@ const {sum,subtract,multiply,divide} = require('./lib/math');
 
 
 const fs = require("fs");
-
+const converter = require('json-2-csv')
 
 const readline = require("readline");
 const rl = readline.createInterface({
@@ -21,16 +21,44 @@ rl.question("Enter the first number: ", (firstNumber) => {
     const multiplyOutput = multiply(parsedFirst, parsedSecond)
     const divideOutput = divide(parsedFirst, parsedSecond).toFixed(2)
    console.log(sumOutput,subtractOutput,multiplyOutput,divideOutput);
- 
-   const data = `
-Opeartion , Result,
-add ${sumOutput}
-subtract : ${subtractOutput}
-multiply : ${multiplyOutput}
-division : ${divideOutput}
-`;
 
-fs.writeFile("data.csv", data, "utf-8", (err) => {
+
+
+
+   
+ 
+const data = [
+  {
+    opeartion : 'Addition',
+    result : sumOutput
+  },
+  {
+    opeartion : 'Subtraction',
+    result : subtractOutput
+  },
+  {
+    opeartion : 'Multiplication',
+    result : multiplyOutput
+  },
+  {
+    opeartion : 'Division',
+    result : divideOutput
+  }
+
+]
+
+const updateData = converter.json2csv(data, (err, csv) => {
+  if (err) {
+    throw err
+  }
+return csv;
+ 
+})
+
+
+
+
+fs.writeFile("data.csv", updateData, "utf-8", (err) => {
   if (err) console.log(err);
   else console.log("Data saved");
 });
