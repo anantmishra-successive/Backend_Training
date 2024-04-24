@@ -16,16 +16,18 @@ rl.question("Enter the first number: ", (firstNumber) => {
     const parsedFirst = parseFloat(firstNumber);
     const parsedSecond = parseFloat(secondNumber);
     console.log(`You entered ${parsedFirst} and ${parsedSecond}. And result of add , subtract, multiply, divide operrations are following:`);
-   console.log(sum([parsedFirst, parsedSecond]));
-   console.log(subtract(parsedFirst, parsedSecond));
-   console.log(multiply(parsedFirst, parsedSecond));
-   console.log(divide(parsedFirst, parsedSecond).toFixed(2));
+    const sumOutput = sum([parsedFirst, parsedSecond])
+    const subtractOutput = subtract(parsedFirst, parsedSecond)
+    const multiplyOutput = multiply(parsedFirst, parsedSecond)
+    const divideOutput = divide(parsedFirst, parsedSecond).toFixed(2)
+   console.log(sumOutput,subtractOutput,multiplyOutput,divideOutput);
+ 
    const data = `
 Opeartion , Result,
-add ${sum([parsedFirst, parsedSecond])}
-subtract : ${subtract(parsedFirst, parsedSecond)}
-multiply : ${multiply(parsedFirst, parsedSecond)}
-division : ${divide(parsedFirst, parsedSecond).toFixed(2)}
+add ${sumOutput}
+subtract : ${subtractOutput}
+multiply : ${multiplyOutput}
+division : ${divideOutput}
 `;
 
 fs.writeFile("data.csv", data, "utf-8", (err) => {
