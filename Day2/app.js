@@ -7,7 +7,7 @@ const app=express();
 
 
 app.get("/",(req,res)=>{
-    res.send(JSON.stringify(data))
+    res.status(200).send(data)
 })
 
 
