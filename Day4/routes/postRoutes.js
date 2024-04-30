@@ -2,7 +2,7 @@ const express = require('express');
 
 let Router = express.Router()
 const {createPost,getPost,manuallyAddPost}=require("../controllers/postController")
-
+const {logRequestDetails} = require("../middlewares/logrequestdetails")
 
 
 Router.get('/generator',createPost );
