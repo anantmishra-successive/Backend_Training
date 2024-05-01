@@ -4,6 +4,7 @@ const {logRequestDetails} = require('./middlewares/logrequestdetails')
 const { errorHandler } = require('./middlewares/errorHandler')
 const { customHeaderMiddleware } = require('./middlewares/customHeaderMiddleware')
 const {rateLimitMiddleware} = require('./middlewares/rateLimitMiddleware')
+const authRouter=require("./routes/authenticationRoute")
 const app = express();
 const PORT =  3000;
 const postRoutes=require("./routes/postRoutes")
@@ -13,7 +14,7 @@ app.use(logRequestDetails)
 app.use(customHeaderMiddleware)
 // app.use(rateLimitMiddleware)
 app.use('/posts',postRoutes)
-
+app.use("/auth",authRouter)
 
 app.get('/custom',rateLimitMiddleware,(req,res,next)=>{
   res.send("hello world");
