@@ -5,10 +5,10 @@ const Book = require("./book");
 const app = express();
 app.use(express.json());
 app.post('/books', async (req, res) => {
-    const { title, author, year } = req.body;
-    const book = new Book({ title, author, year });
+   
+   
     try {
-      await book.save();
+    let book =  await Book.create(req.body)
       res.status(201).send(book);
     } catch (error) {
       res.status(400).send(error);
