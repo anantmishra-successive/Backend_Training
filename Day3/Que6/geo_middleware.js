@@ -6,8 +6,8 @@ const geoip = require("geoip-lite");
 const expectedRegion = "US";
 
 const locationValidationMiddleware = (req, res, next) => {
-  const ip ="207.97.227.239";
-  
+  const ip ="49.249.117.102";
+  // 49.249.117.102  
   const geo = geoip.lookup(ip);
   
 

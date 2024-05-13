@@ -27,24 +27,7 @@ const middleware = (req, res, next) => {
             });
         }
       }
-    } else if (method == "GET") {
-      for (const [fieldName, fieldRules] of Object.entries(rules)) {
-        console.log(fieldName);
-        if (fieldRules.required && !req.body[fieldName]) {
-          return res.status(400).json({ error: `${fieldName} is required` });
-        }
-       else if (
-          fieldRules.minLength &&
-          req.body[fieldName].length < fieldRules.minLength
-        ) {
-          return res
-            .status(400)
-            .json({
-              error: `${fieldName} must be at least ${fieldRules.minLength} characters long`,
-            });
-        }
-      }
-    }
+    } 
   }
   next();
 };
