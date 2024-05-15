@@ -7,7 +7,10 @@ const userSchema = mongoose.Schema({
   },
   email: String,
   password: String,
-  roles: [String],
+  roles: {
+    type:[{ type: String, enum:['admin','user'] }],
+    default: ['user']
+  }
 });
 
 const User = mongoose.model("User", userSchema); // Changed model name to singular, conventionally capitalized
