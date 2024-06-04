@@ -1,5 +1,3 @@
-
-
 const validation = require("./config");
 const middleware = (req, res, next) => {
   const route = req.path;
@@ -20,35 +18,12 @@ const middleware = (req, res, next) => {
           fieldRules.minLength &&
           req.body[fieldName].length < fieldRules.minLength
         ) {
-          return res
-            .status(400)
-            .json({
-              error: `${fieldName} must be at least ${fieldRules.minLength} characters long`,
-            });
-        }
-      }
-<<<<<<< HEAD
-    } else if (method == "GET") {
-      for (const [fieldName, fieldRules] of Object.entries(rules)) {
-        console.log(fieldName);
-        if (fieldRules.required && !req.body[fieldName]) {
-          return res.status(400).json({ error: `${fieldName} is required` });
-        }
-       else if (
-          fieldRules.minLength &&
-          req.body[fieldName].length < fieldRules.minLength
-        ) {
-          return res
-            .status(400)
-            .json({
-              error: `${fieldName} must be at least ${fieldRules.minLength} characters long`,
-            });
+          return res.status(400).json({
+            error: `${fieldName} must be at least ${fieldRules.minLength} characters long`,
+          });
         }
       }
     }
-=======
-    } 
->>>>>>> bd73d3bcfb0e9e9cfcf9dc6a80140585cd93a7f4
   }
   next();
 };
