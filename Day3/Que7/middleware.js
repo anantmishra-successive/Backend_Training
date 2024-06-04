@@ -27,6 +27,7 @@ const middleware = (req, res, next) => {
             });
         }
       }
+<<<<<<< HEAD
     } else if (method == "GET") {
       for (const [fieldName, fieldRules] of Object.entries(rules)) {
         console.log(fieldName);
@@ -45,6 +46,9 @@ const middleware = (req, res, next) => {
         }
       }
     }
+=======
+    } 
+>>>>>>> bd73d3bcfb0e9e9cfcf9dc6a80140585cd93a7f4
   }
   next();
 };

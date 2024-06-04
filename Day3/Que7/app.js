@@ -11,7 +11,11 @@ app.use(bodyParser.json());
 
 app.use(middleware);
 
+<<<<<<< HEAD
 app.get('/login', (req, res) => {
+=======
+app.post('/login', (req, res) => {
+>>>>>>> bd73d3bcfb0e9e9cfcf9dc6a80140585cd93a7f4
     res.send('You are logged in successfully');
 });
 
