@@ -27,12 +27,12 @@ app.use(express.json());
 app.post('/register', async (req, res) => {
   try {
     const { username, password } = req.body;
-    // Check if username already exists
+   
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res.status(400).json({ error: 'Username already exists' });
     }
-    // Create new user
+   
     const newUser = new User({ username, password });
     await newUser.save();
     res.status(201).json({ message: 'User registered successfully' });
